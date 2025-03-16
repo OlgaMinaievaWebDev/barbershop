@@ -8,14 +8,22 @@ import logo from '../assets/barbershop-logo.jpg'
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-regal-green" : "text-black"
+            isActive ? "text-redish" : "text-black"
           }
+          end
         >
           Noir
         </NavLink>
       </div>
       <nav className="flex items-center gap-4">
-        <NavLink to="services">Services</NavLink>
+        <NavLink
+          to="services"
+          className={({ isActive }) =>
+            isActive ? "text-redish" : "text-black"
+          }
+        >
+          Services
+        </NavLink>
         <NavLink to="about">About</NavLink>
         <NavLink to="location">Location</NavLink>
       </nav>

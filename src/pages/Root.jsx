@@ -5,7 +5,7 @@ import Footer from "../components/Footer"
 function Root() {
  return (
    <>
-     <div className="bg-red-300 h-[80vh] font-funnel ">
+     <div className="h-[80vh] font-funnel ">
        <Header />
        <main>
          <Outlet />

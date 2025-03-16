@@ -8,10 +8,8 @@
 
 @theme {
   --font-funnel: "Funnel Sans", sans-serif; 
- --color-light: red
- --color-light-hover: #fcf4ff;
-  --color-dark-hover: #2a004a;
-  --color-darktheme: #11001f;
-   --color-regal-green: #50d71e; 
+  --color-redish: #ff0000;
+  --color-white: #ffffff;
+   
   }
 
