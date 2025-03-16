@@ -3,20 +3,27 @@ import Home from "./pages/Home";
 import ErrorPage from './pages/ErrorPage'
 import Booking from "./pages/Booking";
 import Services from "./pages/Services";
+import Root from "./pages/Root";
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-    errorElement: <ErrorPage/>
-  }, 
-  {
-    path: '/booking',
-    element: <Booking/>
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      }, 
+      {
+        path: '/booking',
+        element: <Booking/>
+      },
+      {
+        path: '/services',
+        element: <Services/>
+      }
+    ]
   },
-  {
-    path: '/services',
-    element: <Services/>
-  }
 ])
 
 function App() {
