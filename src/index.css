@@ -1,5 +1,6 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import "tailwindcss";
 
 * {
  box-sizing: border-box;
@@ -7,4 +8,10 @@
 
 @theme {
   --font-funnel: "Funnel Sans", sans-serif; 
-}
+ --color-light: red
+ --color-light-hover: #fcf4ff;
+  --color-dark-hover: #2a004a;
+  --color-darktheme: #11001f;
+   --color-regal-green: #50d71e; 
+  }
+
