@@ -1,6 +1,8 @@
 <h1>BarberShop Website</h1>
-<p>- Barbershop website is a modern site built with React and styled with Tailwind
+<p>Barbershop website is a modern site built with React and styled with Tailwind
 </p>
+
+
 <h1>Installation</h1>
 <br>
 <h3>1. Clone the Repository</h3>
