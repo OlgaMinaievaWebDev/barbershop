@@ -17,6 +17,7 @@
 <br>
 <p>React</p>
 <p>Tailwind CSS</p>
+<p>Firebase - For user authentication and future database integration</p>
 
 <h1>License</h1>
 <br>
