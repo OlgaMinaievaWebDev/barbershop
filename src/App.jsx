@@ -1,6 +1,7 @@
 import Header from "./components/Header"
 import About from "./pages/About"
 import Home from "./pages/Home"
+import Location from "./pages/Location"
 import Services from "./pages/Services"
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <Header />
       <Home />
       <About />
-      <Services/>
+      <Services />
+      <Location/>
     </>
   )
 }
