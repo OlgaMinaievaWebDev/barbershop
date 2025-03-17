@@ -1,8 +1,9 @@
 function About() {
  return (
-  <div>
-   About
-  </div>
+  <section>
+   <h2>Welcome to Noir barbershop</h2>
+   
+  </section>
  )
 }
 
