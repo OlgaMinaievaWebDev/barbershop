@@ -6,7 +6,10 @@ function Header() {
       <div className="flex gap-2 items-center font-bold">
         <img src={logo} alt="logo" className="h-20" />
         <a href="#home" className="text-black text-2xl font-bold">
-          Noir
+          <span className="uppercase text-accent font-black font-stretch-ultra-expanded">
+            {" "}
+            Noir
+          </span>{" "}
         </a>
       </div>
       <nav className="flex items-center gap-4">
