@@ -13,7 +13,7 @@ function Home() {
      <img
        src={heroImg}
        alt="man shave"
-       className="absolute opacity-80 top-0 left-o w-full h-full object-cover"
+       className="absolute opacity-80 top-0 left-o w-full h-full object-cover grayscale"
      />
    </section>
  );
