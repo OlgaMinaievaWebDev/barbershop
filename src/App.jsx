@@ -1,21 +1,25 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Root from "./pages/Root";
-import Booking from "./pages/Booking";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Location from "./pages/Location";
+import BookingPage from "./pages/Booking";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Root />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/location" element={<Location />} />
-        <Route path="/booking" element={<Booking />} />
-      </Routes>
-    </BrowserRouter>
+    <Router>
+      <div>
+        <Header /> {/* Always visible */}
+        <main className="pt-20 pb-16">
+          {" "}
+          {/* Adjust padding for header and footer */}
+          <Routes>
+            <Route path="/" element={<Root />} />
+            <Route path="/booking" element={<BookingPage />} />
+          </Routes>
+        </main>
+        <Footer /> {/* Always visible */}
+      </div>
+    </Router>
   );
 }
 

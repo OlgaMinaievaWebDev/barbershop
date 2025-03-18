@@ -1,19 +1,18 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import About from "../pages/About";
-import Home from "../pages/Home";
-import Location from "../pages/Location";
-import Services from "../pages/Services";
+
+import About from "../components/About";
+import Home from "../components/Home";
+import Location from "../components/Location";
+import Services from "../components/Services";
 
 function Root() {
   return (
     <>
-      <Header />
+
       <Home />
       <About />
       <Services />
       <Location />
-      <Footer />
+   
     </>
   );
 }

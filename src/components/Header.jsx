@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/barbershop-logo.jpg";
 
 function Header() {
+  const location = useLocation();
+  const isBookingPage = location.pathname === "/booking";
+
   return (
     <header className="h-20 flex justify-between items-center p-6 fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
       <div className="flex gap-2 items-center font-bold">
@@ -13,24 +16,35 @@ function Header() {
         </Link>
       </div>
       <nav className="flex items-center gap-4">
-        <Link
-          to="/about"
-          className="text-black text-xl font-bold hover:text-accent"
-        >
-          About
-        </Link>
-        <Link
-          to="/services"
-          className="text-black text-xl font-bold hover:text-accent"
-        >
-          Services
-        </Link>
-        <Link
-          to="/location"
-          className="text-black text-xl font-bold hover:text-accent"
-        >
-          Contacts
-        </Link>
+        {isBookingPage ? (
+          <Link
+            to="/"
+            className="text-white bg-accent rounded-md px-4 py-2 text-xl font-bold shadow-md hover:bg-accent-dark transition-all"
+          >
+            Home
+          </Link>
+        ) : (
+          <>
+            <a
+              href="#about"
+              className="text-black text-xl font-bold hover:text-accent"
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              className="text-black text-xl font-bold hover:text-accent"
+            >
+              Services
+            </a>
+            <a
+              href="#location"
+              className="text-black text-xl font-bold hover:text-accent"
+            >
+              Contacts
+            </a>
+          </>
+        )}
       </nav>
     </header>
   );

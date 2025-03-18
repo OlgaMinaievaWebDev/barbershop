@@ -2,6 +2,7 @@ import { FaSquareFacebook, FaSquareInstagram, FaPhone } from "react-icons/fa6";
 
 function Contacts() {
   return (
+    
     <div className="w-full p-6 flex flex-col items-center bg-white rounded-2xl shadow-xl space-y-6 text-black">
       <h2 className="text-3xl text-center font-bold mb-6 text-black">
         Contact{" "}
