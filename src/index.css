@@ -5,6 +5,10 @@
 * {
  box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 @theme {
   --font-funnel: "Funnel Sans", sans-serif; 

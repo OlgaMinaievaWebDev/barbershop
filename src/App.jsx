@@ -1,21 +1,22 @@
-import Footer from "./components/Footer"
-import Header from "./components/Header"
-import About from "./pages/About"
-import Home from "./pages/Home"
-import Location from "./pages/Location"
-import Services from "./pages/Services"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Root from "./pages/Root";
+import Booking from "./pages/Booking";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Location from "./pages/Location";
+
 function App() {
   return (
-    <>
-      <Header />
-      <Home />
-      <About />
-      <Services />
-      <Location />
-      <Footer/>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Root />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
-
+export default App;
