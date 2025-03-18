@@ -27,8 +27,24 @@ function Contacts() {
 
       {/* Social Media Icons */}
       <div className="flex gap-6 mt-4 text-3xl">
+        <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+        >
+          
         <FaSquareFacebook className="hover:text-accent cursor-pointer transition-colors" />
+        </a>
+         <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+        >
+          
         <FaSquareInstagram className="hover:text-accent cursor-pointer transition-colors" />
+          </a>
       </div>
     </div>
   );

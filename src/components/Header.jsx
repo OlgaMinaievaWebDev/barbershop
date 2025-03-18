@@ -13,14 +13,23 @@ function Header() {
         </a>
       </div>
       <nav className="flex items-center gap-4">
-        <a href="#about" className="text-black text-xl font-bold">
+        <a
+          href="#about"
+          className="text-black text-xl font-bold hover:text-accent"
+        >
           About
         </a>
-        <a href="#services" className="text-black text-xl font-bold">
+        <a
+          href="#services"
+          className="text-black text-xl font-bold hover:text-accent"
+        >
           Services
         </a>
-        <a href="#location" className="text-black text-xl font-bold">
-          Location
+        <a
+          href="#location"
+          className="text-black text-xl font-bold hover:text-accent"
+        >
+          Contacts
         </a>
       </nav>
     </header>

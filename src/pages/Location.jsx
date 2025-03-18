@@ -4,7 +4,7 @@ import GoogleMap from "../components/GoogleMap";
 function Location() {
   return (
     <section
-      className="flex flex-row w-full p-6 gap-6 items-start bg-textGray text-white"
+      className="flex  w-full p-6 gap-6 "
       id="location"
     >
       <div className="w-1/2">
