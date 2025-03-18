@@ -1,8 +1,13 @@
 function Footer() {
  return (
-   <footer className="h-20 flex justify-between items-center p-6 shadow-md">
-     <h4>Follow us fb insta </h4>
-     <p>© Noir Barbershop. All rights reserved</p>
+   <footer className="h-20 flex justify-center items-center p-6 shadow-md ">
+     <p>
+       ©{" "}
+       <span className="uppercase text-accent font-black tracking-widest">
+         Noir
+       </span>{" "}
+       Barbershop. All rights reserved
+     </p>
    </footer>
  );
 }
