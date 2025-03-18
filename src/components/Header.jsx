@@ -5,12 +5,22 @@ function Header() {
   const location = useLocation();
   const isBookingPage = location.pathname === "/booking";
 
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="h-20 flex justify-between items-center p-6 fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
       <div className="flex gap-2 items-center font-bold">
-        <img src={logo} alt="logo" className="h-20" />
-        <Link to="/" className="text-black text-2xl font-bold">
-          <span className="uppercase text-accent font-black font-stretch-ultra-expanded">
+        <Link
+          to="/"
+          onClick={handleLogoClick}
+          className="flex items-center gap-2"
+        >
+          <img src={logo} alt="logo" className="h-20" />
+          <span className="uppercase text-accent text-2xl font-black font-stretch-ultra-expanded">
             Noir
           </span>
         </Link>
