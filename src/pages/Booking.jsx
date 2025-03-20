@@ -32,14 +32,10 @@ function Booking() {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("");
   const [email, setEmail] = useState("");
-  const [inputData, setInputData] = useState({});
 
   const handleBarberSelect = (barber) => setSelectedBarber(barber);
   const handleDateSelect = (date) => setStartDate(date);
-  const handleTimeSelect = (time, event) => {
-    event.preventDefault();
-    setSelectedTime(time);
-  };
+  const handleTimeSelect = (time) => setSelectedTime(time);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,23 +56,9 @@ function Booking() {
     // Format the date
     const formattedDate = format(startDate, "yyyy-MM-dd");
 
-    // Create a FormData object
-    const formData = new FormData(event.target);
-
-    // Add additional fields to the FormData object
-    if (selectedBarber) {
-      formData.append("barber", selectedBarber.name);
-    }
-    formData.append("date", formattedDate);
-    formData.append("time", selectedTime);
-
-    // Convert FormData to a plain object
-    const data = Object.fromEntries(formData.entries());
-    setInputData(data);
-
     // Show the toast notification
     toast.success(
-      `You have booked ${data.barber} on ${data.date} at ${data.time}. Check your email for confirmation.`
+      `You have booked ${selectedBarber.name} on ${formattedDate} at ${selectedTime}. Check your email for confirmation.`
     );
 
     // Reset form after showing notification
@@ -89,6 +71,11 @@ function Booking() {
 
   const isEmailValid =
     email && /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email);
+
+  const isStep1Valid = selectedBarber !== null;
+  const isStep2Valid = startDate !== null;
+  const isStep3Valid = selectedTime !== "";
+  const isStep4Valid = isEmailValid;
 
   return (
     <>
@@ -117,9 +104,9 @@ function Booking() {
                 ))}
               </div>
               <div className="flex justify-end mt-4">
-                {selectedBarber && (
-                  <Button onClick={() => setStep(2)}>Next</Button>
-                )}
+                <Button onClick={() => setStep(2)} disabled={!isStep1Valid}>
+                  Next
+                </Button>
               </div>
             </div>
           )}
@@ -142,7 +129,7 @@ function Booking() {
               </div>
               <div className="flex justify-between items-center mt-4">
                 <Button onClick={() => setStep(1)}>Back</Button>
-                <Button onClick={() => setStep(3)} disabled={!startDate}>
+                <Button onClick={() => setStep(3)} disabled={!isStep2Valid}>
                   Next
                 </Button>
               </div>
@@ -162,7 +149,7 @@ function Booking() {
                         ? "bg-accent text-white"
                         : "bg-white text-gray-700"
                     } transition`}
-                    onClick={(event) => handleTimeSelect(time, event)}
+                    onClick={() => handleTimeSelect(time)}
                   >
                     {time}
                   </button>
@@ -170,7 +157,7 @@ function Booking() {
               </div>
               <div className="flex justify-between items-center">
                 <Button onClick={() => setStep(2)}>Back</Button>
-                <Button onClick={() => setStep(4)} disabled={!selectedTime}>
+                <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>
                   Next
                 </Button>
               </div>
@@ -193,7 +180,7 @@ function Booking() {
               </div>
               <div className="flex justify-between items-center mt-4">
                 <Button onClick={() => setStep(3)}>Back</Button>
-                <Button type="submit" disabled={!isEmailValid}>
+                <Button type="submit" disabled={!isStep4Valid}>
                   Confirm Booking
                 </Button>
               </div>
