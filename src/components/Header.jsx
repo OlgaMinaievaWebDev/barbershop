@@ -1,9 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 import logo from "../assets/barbershop-logo.jpg";
 
 function Header() {
   const location = useLocation();
   const isBookingPage = location.pathname === "/booking";
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
     if (location.pathname === "/") {
@@ -11,10 +14,15 @@ function Header() {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
-      <div className="flex flex-col sm:flex-row justify-between items-center p-2 sm:p-4">
-        <div className="flex gap-2 items-center font-bold">
+      <div className="flex justify-between items-center p-2 sm:p-4">
+        {/* Logo Section */}
+        <div className="flex gap-2 items-center">
           <Link
             to="/"
             onClick={handleLogoClick}
@@ -27,7 +35,20 @@ function Header() {
           </Link>
         </div>
 
-        <nav className="sm:mt-0 flex flex-col sm:flex-row items-center sm:gap-6">
+        {/* Burger Menu Button (Visible on small screens) */}
+        <button
+          onClick={toggleMenu}
+          className="sm:hidden flex items-center justify-center p-2"
+        >
+          <span className="text-2xl">&#9776;</span>
+        </button>
+
+        {/* Navigation Links */}
+        <nav
+          className={`sm:flex ${
+            isMenuOpen ? "block" : "hidden"
+          } sm:mt-0 flex-col sm:flex-row items-center sm:gap-6`}
+        >
           {isBookingPage ? (
             <Link
               to="/"
