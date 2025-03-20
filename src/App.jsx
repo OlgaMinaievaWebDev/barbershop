@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Root from "./pages/Root";
 import BookingPage from "./pages/Booking";
+import ConfirmationPage from "./pages/ConfirmationPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Root />} />
             <Route path="/booking" element={<BookingPage />} />
+            <Route path="/confirmation" element={<ConfirmationPage />} />
           </Routes>
         </main>
         <Footer /> {/* Always visible */}

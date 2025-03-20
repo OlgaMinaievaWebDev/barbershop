@@ -2,6 +2,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import avatarOne from "../assets/avatar1.avif";
 import avatarTwo from "../assets/avatar2.avif";
 import avatarThree from "../assets/avatar3.avif";
@@ -27,6 +28,7 @@ const availableTimes = [
 ];
 
 function Booking() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [selectedBarber, setSelectedBarber] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
@@ -61,6 +63,9 @@ function Booking() {
       `You have booked ${selectedBarber.name} on ${formattedDate} at ${selectedTime}. Check your email for confirmation.`
     );
 
+    // Redirect to the confirmation page
+    navigate("/confirmation");
+
     // Reset form after showing notification
     setStep(1);
     setSelectedBarber(null);
@@ -83,7 +88,9 @@ function Booking() {
         <form onSubmit={handleSubmit}>
           {step === 1 && (
             <div>
-              <h2 className="text-3xl font-bold mb-6">Choose Your Barber</h2>
+              <h2 className="text-3xl font-bold mb-6 mt-16">
+                Choose Your Barber
+              </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {DUMMY_BARBERS.map((barber) => (
                   <div
@@ -113,7 +120,7 @@ function Booking() {
 
           {step === 2 && (
             <>
-              <h2 className="text-3xl font-bold mb-6 text-center">
+              <h2 className="text-3xl font-bold mb-6 text-center  mt-16">
                 Select Date
               </h2>
               <div className="flex justify-center">
@@ -138,7 +145,7 @@ function Booking() {
 
           {step === 3 && (
             <>
-              <h2 className="text-3xl font-bold mb-6">Select Time</h2>
+              <h2 className="text-3xl font-bold mb-6 mt-16">Select Time</h2>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 {availableTimes.map((time) => (
                   <button
@@ -166,7 +173,9 @@ function Booking() {
 
           {step === 4 && (
             <div>
-              <h2 className="text-3xl font-bold mb-6">Confirm Booking</h2>
+              <h2 className="text-3xl font-bold mb-6  mt-16">
+                Confirm Booking
+              </h2>
               <div className="mb-6 space-y-4">
                 <input
                   type="email"

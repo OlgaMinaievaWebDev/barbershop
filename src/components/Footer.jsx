@@ -1,15 +1,15 @@
 function Footer() {
- return (
-   <footer className="h-20 flex justify-center items-center p-6 ">
-     <p>
-       ©{" "}
-       <span className="uppercase text-accent font-black tracking-widest">
-         Noir
-       </span>{" "}
-       Barbershop. All rights reserved
-     </p>
-   </footer>
- );
+  return (
+    <footer className="h-20 flex justify-center items-center p-4 sm:p-6">
+      <p className="text-center text-sm sm:text-base">
+        ©{" "}
+        <span className="uppercase text-accent font-black tracking-widest">
+          Noir
+        </span>{" "}
+        Barbershop. All rights reserved
+      </p>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

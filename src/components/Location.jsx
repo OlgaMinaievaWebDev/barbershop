@@ -4,13 +4,13 @@ import GoogleMap from "../components/GoogleMap";
 function Location() {
   return (
     <section
-      className="flex  w-full p-6 gap-6 "
+      className="flex flex-col sm:flex-row w-full p-4 sm:p-6 gap-6 scroll-smooth"
       id="location"
     >
-      <div className="w-1/2">
+      <div className="w-full sm:w-1/2">
         <GoogleMap />
       </div>
-      <div className="w-1/2">
+      <div className="w-full sm:w-1/2">
         <Contacts />
       </div>
     </section>
