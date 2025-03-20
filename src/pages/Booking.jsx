@@ -8,30 +8,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DUMMY_BARBERS = [
-  {
-    id: 1,
-    name: "Joe",
-    role: "Senior Barber",
-    avatar: avatarOne,
-  },
-  {
-    id: 2,
-    name: "Mike",
-    role: "Junior Barber",
-    avatar: avatarTwo,
-  },
-  {
-    id: 3,
-    name: "Joe",
-    role: "Chris Barber",
-    avatar: avatarThree,
-  },
-  {
-    id: 4,
-    name: "Any",
-    role: "Any Available Barber",
-    avatar: avatarFour,
-  },
+  { id: 1, name: "Joe", role: "Senior Barber", avatar: avatarOne },
+  { id: 2, name: "Mike", role: "Junior Barber", avatar: avatarTwo },
+  { id: 3, name: "Joe", role: "Chris Barber", avatar: avatarThree },
+  { id: 4, name: "Any", role: "Any Available Barber", avatar: avatarFour },
 ];
 
 const availableTimes = [
@@ -47,24 +27,15 @@ function Booking() {
   const [step, setStep] = useState(1);
   const [selectedBarber, setSelectedBarber] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState();
+  const [selectedTime, setSelectedTime] = useState("");
 
-  const handleBarberSelect = (barber) => {
-    setSelectedBarber(barber);
-  };
-
-  const handleDateSelect = (date) => {
-    setStartDate(date);
-  };
-
-  const handleTimeSelect = (time) => {
-    setSelectedTime(time);
-    setStep(4); // Proceed to confirm step
-  };
+  const handleBarberSelect = (barber) => setSelectedBarber(barber);
+  const handleDateSelect = (date) => setStartDate(date);
+  const handleTimeSelect = (time) => setSelectedTime(time);
 
   return (
     <>
-      <div className="h-[70vh] flex flex-col items-center justify-center p-4">
+      <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-700 mt-8">
         {step === 1 && (
           <div>
             <h2 className="text-3xl font-bold mb-6">Choose Your Barber</h2>
@@ -72,7 +43,9 @@ function Booking() {
               {DUMMY_BARBERS.map((barber) => (
                 <div
                   key={barber.id}
-                  className="flex flex-col items-center p-4 cursor-pointer border border-textGray rounded-lg shadow hover:bg-gray-100 transition"
+                  className={`flex flex-col items-center p-4 border rounded-lg shadow hover:bg-gray-100 transition cursor-pointer ${
+                    selectedBarber?.id === barber.id ? "bg-gray-100" : ""
+                  }`}
                   onClick={() => handleBarberSelect(barber)}
                 >
                   <img
@@ -80,66 +53,86 @@ function Booking() {
                     alt={barber.role}
                     className="w-15 h-20 rounded-full mb-2"
                   />
-                  <h3 className="font-bold text-lg hover:text-accent transition">
-                    {barber.name}
-                  </h3>
-                  <p className="text-sm text-textGray">{barber.role}</p>
+                  <h3 className="font-bold text-lg">{barber.name}</h3>
+                  <p className="text-sm text-gray-500">{barber.role}</p>
                 </div>
               ))}
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-4">
               {selectedBarber && (
                 <Button onClick={() => setStep(2)}>Next</Button>
               )}
             </div>
           </div>
         )}
+
         {step === 2 && (
           <>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Select Date</h2>
-              <DatePicker
-                selected={startDate}
-                onChange={handleDateSelect}
-                inline
-                minDate={new Date()} // Disable past dates
-              />
+            <h2 className="text-3xl font-bold mb-6 text-center">Select Date</h2>
+            <div className="flex justify-center">
+              {" "}
+              {/* This centers the calendar */}
+              <div className="bg-white p-6 rounded-lg border border-gray-300 shadow-md">
+                <DatePicker
+                  selected={startDate}
+                  onChange={handleDateSelect}
+                  inline
+                  minDate={new Date()}
+                  calendarClassName="custom-calendar"
+                />
+              </div>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-4">
               <Button onClick={() => setStep(1)}>Back</Button>
-              <Button
-                onClick={() => setStep(3)}
-                disabled={!startDate} // Disable button if no date is selected
-              >
+              <Button onClick={() => setStep(3)} disabled={!startDate}>
                 Next
               </Button>
             </div>
           </>
         )}
+
         {step === 3 && (
           <>
             <h2 className="text-3xl font-bold mb-6">Select Time</h2>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-3 gap-4 mb-6">
               {availableTimes.map((time) => (
-                <Button key={time} onClick={() => handleTimeSelect(time)}>
+                <button
+                  key={time}
+                  className={`px-4 py-2 rounded-lg border ${
+                    selectedTime === time
+                      ? "bg-accent text-white"
+                      : "bg-white text-gray-700 hover:bg-gray-400 hover:text-white"
+                  } transition`}
+                  onClick={() => handleTimeSelect(time)}
+                >
                   {time}
-                </Button>
+                </button>
               ))}
             </div>
             <div className="flex justify-between items-center">
               <Button onClick={() => setStep(2)}>Back</Button>
-              <Button onClick={() => setStep(4)}>Next</Button>
+              <Button onClick={() => setStep(4)} disabled={!selectedTime}>
+                Next
+              </Button>
             </div>
           </>
         )}
+
         {step === 4 && (
-          <>
-            <div>Email</div>
+          <div>
+            <h2 className="text-3xl font-bold mb-6">Confirm Booking</h2>
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
             <div className="flex justify-between items-center">
               <Button onClick={() => setStep(3)}>Back</Button>
-              <Button>Submit</Button>
+              <Button>Confirm Booking</Button>
             </div>
-          </>
+          </div>
         )}
       </div>
     </>

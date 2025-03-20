@@ -18,3 +18,34 @@ html {
    
   }
 
+  .custom-calendar {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.react-datepicker__month-container {
+  background-color: white;
+}
+
+.react-datepicker__header {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #ff0000 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.react-datepicker__day:hover {
+  background-color: #ff0000 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.react-datepicker__current-month {
+  font-weight: bold;
+}
+
