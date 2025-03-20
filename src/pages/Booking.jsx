@@ -125,12 +125,13 @@ function Booking() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-none outline-none"
+                required
               />
             </div>
             <div className="flex justify-between items-center">
               <Button onClick={() => setStep(3)}>Back</Button>
-              <Button>Confirm Booking</Button>
+              <Button type="submit">Confirm Booking</Button>
             </div>
           </div>
         )}
