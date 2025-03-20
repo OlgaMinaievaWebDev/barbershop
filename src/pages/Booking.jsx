@@ -84,7 +84,8 @@ function Booking() {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-700 mt-8">
+     <div className="flex flex-col min-h-screen">
+        <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-700 mt-8 flex-grow">
         <form onSubmit={handleSubmit}>
           {step === 1 && (
             <div>
@@ -201,7 +202,8 @@ function Booking() {
           position="top-center"
           autoClose={5000}
           style={{ zIndex: 10000 }}
-        />
+          />
+          </div>
       </div>
     </>
   );

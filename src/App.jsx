@@ -8,11 +8,11 @@ import ConfirmationPage from "./pages/ConfirmationPage";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="flex flex-col min-h-screen">
         <Header /> {/* Always visible */}
-        <main className="pt-20 pb-16">
+        <main className="flex-grow pt-20 pb-16 overflow-auto">
           {" "}
-          {/* Adjust padding for header and footer */}
+          {/* Add overflow-auto for scroll */}
           <Routes>
             <Route path="/" element={<Root />} />
             <Route path="/booking" element={<BookingPage />} />
