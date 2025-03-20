@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import avatarOne from '../assets/avatar1.avif'
-import avatarTwo from '../assets/avatar2.avif'
-import avatarThree from '../assets/avatar3.avif'
-import avatarFour from '../assets/avatar4.avif'
-import Button from '../UI/Button';
-import DatePicker from 'react-datepicker';
+import { useState } from "react";
+import avatarOne from "../assets/avatar1.avif";
+import avatarTwo from "../assets/avatar2.avif";
+import avatarThree from "../assets/avatar3.avif";
+import avatarFour from "../assets/avatar4.avif";
+import Button from "../UI/Button";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DUMMY_BARBERS = [
@@ -34,22 +34,33 @@ const DUMMY_BARBERS = [
   },
 ];
 
-function Booking() {
-  const [step, setStep] = useState(1)
-  const [selectedBarber, setSelectedBarber] = useState(null)
-  const [startDate, setStartDate] = useState(new Date());
+const availableTimes = [
+  "11:00 AM",
+  "12:00 PM",
+  "01:00 PM",
+  "02:00 PM",
+  "03:00 PM",
+  "04:00 PM",
+];
 
- 
+function Booking() {
+  const [step, setStep] = useState(1);
+  const [selectedBarber, setSelectedBarber] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState();
+
   const handleBarberSelect = (barber) => {
-    setSelectedBarber(barber)
-   
-  }
+    setSelectedBarber(barber);
+  };
 
   const handleDateSelect = (date) => {
     setStartDate(date);
-    
   };
 
+  const handleTimeSelect = (time) => {
+    setSelectedTime(time);
+    setStep(4); // Proceed to confirm step
+  };
 
   return (
     <>
@@ -69,7 +80,7 @@ function Booking() {
                     alt={barber.role}
                     className="w-15 h-20 rounded-full mb-2"
                   />
-                  <h3 className="font-bold text-lg  hover:text-accent transition">
+                  <h3 className="font-bold text-lg hover:text-accent transition">
                     {barber.name}
                   </h3>
                   <p className="text-sm text-textGray">{barber.role}</p>
@@ -91,6 +102,7 @@ function Booking() {
                 selected={startDate}
                 onChange={handleDateSelect}
                 inline
+                minDate={new Date()} // Disable past dates
               />
             </div>
             <div className="flex justify-between items-center">
@@ -101,6 +113,31 @@ function Booking() {
               >
                 Next
               </Button>
+            </div>
+          </>
+        )}
+        {step === 3 && (
+          <>
+            <h2 className="text-3xl font-bold mb-6">Select Time</h2>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              {availableTimes.map((time) => (
+                <Button key={time} onClick={() => handleTimeSelect(time)}>
+                  {time}
+                </Button>
+              ))}
+            </div>
+            <div className="flex justify-between items-center">
+              <Button onClick={() => setStep(2)}>Back</Button>
+              <Button onClick={() => setStep(4)}>Next</Button>
+            </div>
+          </>
+        )}
+        {step === 4 && (
+          <>
+            <div>Email</div>
+            <div className="flex justify-between items-center">
+              <Button onClick={() => setStep(3)}>Back</Button>
+              <Button>Submit</Button>
             </div>
           </>
         )}
