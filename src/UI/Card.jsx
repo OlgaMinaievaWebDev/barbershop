@@ -9,21 +9,21 @@ function Card() {
       image: haircutImg,
       name: "Haircut",
       duration: 60,
-      price: 800,
+      price: 50,
     },
     {
      id: 2,
      image: buzzCutImg,
       name: "Buzz Cut",
       duration: 30,
-      price: 500,
+      price: 30,
     },
     {
      id: 3,
      image: beardTrimImg,
       name: "Beard Trim",
       duration: 30,
-      price: 400,
+      price: 40,
     },
   ];
 
