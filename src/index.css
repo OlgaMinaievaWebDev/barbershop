@@ -9,6 +9,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Override browser autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Set background to white */
+  -webkit-text-fill-color: #000 !important; /* Set text color */
+  transition: background-color 5000s ease-in-out 0s; /* Prevent background color change */
+}
 
 @theme {
   --font-funnel: "Funnel Sans", sans-serif; 
@@ -48,4 +57,3 @@ html {
 .react-datepicker__current-month {
   font-weight: bold;
 }
-
