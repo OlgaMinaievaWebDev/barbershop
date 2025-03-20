@@ -12,50 +12,53 @@ function Header() {
   };
 
   return (
-    <header className="h-20 flex justify-between items-center p-6 fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
-      <div className="flex gap-2 items-center font-bold">
-        <Link
-          to="/"
-          onClick={handleLogoClick}
-          className="flex items-center gap-2"
-        >
-          <img src={logo} alt="logo" className="h-20" />
-          <span className="uppercase text-accent text-2xl font-black font-stretch-ultra-expanded">
-            Noir
-          </span>
-        </Link>
-      </div>
-      <nav className="flex items-center gap-4">
-        {isBookingPage ? (
+    <header className="fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
+      <div className="flex flex-col sm:flex-row justify-between items-center p-2 sm:p-4">
+        <div className="flex gap-2 items-center font-bold">
           <Link
             to="/"
-            className="text-white bg-accent rounded-md px-4 py-2 text-xl font-bold shadow-md hover:bg-accent-dark transition-all"
+            onClick={handleLogoClick}
+            className="flex items-center gap-2"
           >
-            Home
+            <img src={logo} alt="logo" className="h-16 sm:h-20" />
+            <span className="uppercase text-accent text-2xl sm:text-3xl font-black font-stretch-ultra-expanded">
+              Noir
+            </span>
           </Link>
-        ) : (
-          <>
-            <a
-              href="#about"
-              className="text-black text-xl font-bold hover:text-accent"
+        </div>
+
+        <nav className="sm:mt-0 flex flex-col sm:flex-row items-center sm:gap-6">
+          {isBookingPage ? (
+            <Link
+              to="/"
+              className="text-white bg-accent rounded-md px-4 py-2 text-xl font-bold shadow-md hover:bg-accent-dark transition-all"
             >
-              About
-            </a>
-            <a
-              href="#services"
-              className="text-black text-xl font-bold hover:text-accent"
-            >
-              Services
-            </a>
-            <a
-              href="#location"
-              className="text-black text-xl font-bold hover:text-accent"
-            >
-              Contacts
-            </a>
-          </>
-        )}
-      </nav>
+              Home
+            </Link>
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
+              <a
+                href="#about"
+                className="text-black text-lg sm:text-xl font-bold hover:text-accent"
+              >
+                About
+              </a>
+              <a
+                href="#services"
+                className="text-black text-lg sm:text-xl font-bold hover:text-accent"
+              >
+                Services
+              </a>
+              <a
+                href="#location"
+                className="text-black text-lg sm:text-xl font-bold hover:text-accent"
+              >
+                Contacts
+              </a>
+            </div>
+          )}
+        </nav>
+      </div>
     </header>
   );
 }
