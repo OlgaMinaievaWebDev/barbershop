@@ -1,5 +1,5 @@
 function CardItem({ item }) {
-  const { name, duration, price, image } = item;
+  const { name, duration, price, image, barber } = item;
   return (
     <li className="flex flex-col gap-2 shadow-lg rounded-lg text-center">
       <img
@@ -9,7 +9,8 @@ function CardItem({ item }) {
       />
       <h3 className="text-lg font-semibold">{name}</h3>
       <p>{duration} min</p>
-      <p className="text-accent text-sm mb-3 font-semibold">${price}</p>
+      <p className="text-sm text-accent">{barber}</p>
+      <p className="text-sm mb-3 ">${price}</p>
     </li>
   );
 }
