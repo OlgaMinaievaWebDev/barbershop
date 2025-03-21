@@ -7,10 +7,10 @@
 
 <a href="">
 <h1>Features</h1>
- - Choose Barber: Users can select one of the three barbers or choose "Any Barber".
- - Select Date: Users can pick an available date from a calendar.
- - Select Time: Users can choose an available time slot for the selected barber and date.
- - Confirm Email: Users enter their email for booking confirmation.
+ <p> Choose Barber: Users can select one of the three barbers or choose "Any Barber".</p>
+ <p> Select Date: Users can pick an available date from a calendar.</p>
+ <p> Select Time: Users can choose an available time slot for the selected barber and date.</p>
+ <p> Confirm Email: Users enter their email for booking confirmation.</p>
 
 <h1>Installation</h1>
 <br>
@@ -23,10 +23,10 @@
 <p>npm run dev</p>
 
 <h1>Technologies Used</h1>
-- React
-- Tailwind CSS
+<p> React</p>
+<p> Tailwind CSS</p>
 
 
 <h1>License</h1>
 <br>
-This project is licensed under the MIT License. For more details, see the LICENSE file.
+<p>This project is licensed under the MIT License. For more details, see the LICENSE file.</p>
